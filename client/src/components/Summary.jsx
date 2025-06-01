@@ -6,6 +6,7 @@ import CardStack from './CardStack';
 import { useState } from 'react';
 
 const pageLabels = ['Personal Information', 'Educational Status', 'Projects', 'Summary'];
+const API_BASE_URL = 'https://formforge-yvcs.onrender.com';
 
 const Summary = () => {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ const Summary = () => {
       setSubmitting(true);
       setError('');
       
-      const response = await fetch('http://localhost:5000/api/form/submit', {
+      const response = await fetch(`${API_BASE_URL}/api/form/submit`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -12,6 +12,8 @@ const steps = [
   { label: 'Additional Info' },
 ];
 
+const API_BASE_URL = 'https://formforge-yvcs.onrender.com';
+
 const Dashboard = () => {
   const navigate = useNavigate();
   const { token, logout, loading: authLoading, user } = useAuth();
@@ -26,7 +28,7 @@ const Dashboard = () => {
         return;
       }
       try {
-        const response = await fetch('http://localhost:5000/api/form/submissions', {
+        const response = await fetch(`${API_BASE_URL}/api/form/submissions`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }

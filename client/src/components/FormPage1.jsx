@@ -28,6 +28,8 @@ const validateForm = (data) => {
 // Replace the steps array with the page labels
 const pageLabels = ['Personal Information', 'Educational Status', 'Projects', 'Summary'];
 
+const API_BASE_URL = 'https://formforge-yvcs.onrender.com';
+
 const FormPage1 = () => {
   const navigate = useNavigate();
   const { formData, updateFormData } = formContext(); // Changed from useFormContext to formContext
@@ -70,7 +72,7 @@ const FormPage1 = () => {
       
       try {
         setIsLoading(true);
-        const response = await fetch('http://localhost:5000/api/form/page1', {
+        const response = await fetch(`${API_BASE_URL}/api/form/page1`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -104,7 +106,7 @@ const FormPage1 = () => {
       setIsSubmitting(true);
       setError('');
       
-      const response = await fetch('http://localhost:5000/api/form/page1', {
+      const response = await fetch(`${API_BASE_URL}/api/form/page1`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

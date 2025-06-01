@@ -10,6 +10,8 @@ import CardStack from './CardStack';
 
 const pageLabels = ['Personal Information', 'Educational Status', 'Projects', 'Summary'];
 
+const API_BASE_URL = 'https://formforge-yvcs.onrender.com';
+
 const FormPage3 = () => {
   const navigate = useNavigate();
   const { formData, updateFormData } = useFormContext();
@@ -54,7 +56,7 @@ const FormPage3 = () => {
       controller.current = new AbortController();
       try {
         fetchAttempted.current = true;
-        const response = await fetch('http://localhost:5000/api/form/page3', {
+        const response = await fetch(`${API_BASE_URL}/api/form/page3`, {
           headers: {
             'Authorization': `Bearer ${token}`
           },
@@ -101,7 +103,7 @@ const FormPage3 = () => {
       setIsSubmitting(true);
       setError('');
       
-      const response = await fetch('http://localhost:5000/api/form/page3', {
+      const response = await fetch(`${API_BASE_URL}/api/form/page3`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
